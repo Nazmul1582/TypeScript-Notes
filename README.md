@@ -6,21 +6,23 @@
 
 ## Table of Contents
 
-- [What is TypeScript?](#1-1-what-is-typescript)
-   - [Shortcomings of JavaScript](#shortcomings-of-javascript)
-   - [Benefits of Using TypeScript](#benefits-of-using-typescript)
-   - [JavaScript and TypeScript Types](#javascript-and-typescript-types)
+- [1 Explore Basic Type in TypeScript](#1-explore-basic-type-in-typescript)
+  - [1-1 Introduction To TypeScript](#1-1-introduction-to-typescript)
+    - [Shortcomings of JavaScript](#shortcomings-of-javascript)
+    - [Benefits of Using TypeScript](#benefits-of-using-typescript)
+    - [JavaScript and TypeScript Types](#javascript-and-typescript-types)
       - [TypeScript-Specific Types](#typescript-specific-types)
    - [Drawbacks of Using TypeScript](#drawbacks-of-using-typescript)
-  - [Installation](#1-2-installation)
-  - [Write your first typescript program](#1-3-write-your-first-typescript-program)
-  - [Understanding Data Types and Runtime Behavior](#1-4-understanding-data-types-and-runtime-behavior)
+  - [1-2 install typescript and fast node version manager](#1-2-install-typescript-and-fast-node-version-manager)
+  - [1-3 Write your first typescript program](#1-3-write-your-first-typescript-program)
+  - [1-4 Understanding Data Types and Runtime Behavior](#1-4-understanding-data-types-and-runtime-behavior)
 
 
+# 1 Explore Basic Type in TypeScript
 
 ---
 
-# 1-1 What is TypeScript?
+## 1-1 Introduction To TypeScript
 
 TypeScript is an Object-Oriented Programming language built on top of JavaScript. It adds additional features to JavaScript, such as static typing, which makes development more robust. TypeScript code can be transpiled into JavaScript, allowing it to run in any environment that supports JavaScript.
 
@@ -94,7 +96,7 @@ TypeScript is an Object-Oriented Programming language built on top of JavaScript
 ---
 
 
-## 1-2 Installation
+## 1-2 install typescript and fast node version manager
 
 1. **Download and Install Node.js**  
    - Download Node.js from its [official website](https://nodejs.org).  
