@@ -16,6 +16,7 @@
   - [1-2 install typescript and fast node version manager](#1-2-install-typescript-and-fast-node-version-manager)
   - [1-3 Write your first typescript program](#1-3-write-your-first-typescript-program)
   - [1-4 Understanding Data Types and Runtime Behavior](#1-4-understanding-data-types-and-runtime-behavior)
+  - [1-5 Object , Optional and Literal Types](#1-5-object-optional-literal-and-readonly-types-in-typescript)
 
 
 # 1 Explore Basic Type in TypeScript
@@ -425,5 +426,143 @@ let num = 42;
 2. TypeScript types exist only at compile-time and are not available at runtime.
 3. JavaScript, the output of TypeScript, is what runs in the browser or Node.js, using JavaScript types during execution.
 4. Understanding both primitive and non-primitive data types helps in writing robust and type-safe TypeScript code.
+
+---
+
+## 1-5 **Object, Optional, Literal, and Readonly Types in TypeScript**
+
+#### **1. Object Types**
+
+An **Object type** in TypeScript represents a collection of key-value pairs. The structure of an object is defined by its properties and their types.
+
+###### **Example:**
+```typescript
+// Defining an object type for a person
+let person: { firstName: string, lastName: string, isMarried: boolean } = {
+    firstName: "John",
+    lastName: "Doe",
+    isMarried: false
+};
+```
+In this example:
+- `firstName`, `lastName`, and `isMarried` are properties of the `person` object.
+- The type of `firstName` is `string`, `lastName` is `string`, and `isMarried` is `boolean`.
+
+---
+
+#### **2. Optional Types**
+
+**Optional Types** allow you to define properties in an object that may or may not be provided. You mark a property as optional by appending a `?` to its name.
+
+###### **Example:**
+```typescript
+// Defining an object type with an optional property
+let person: { firstName: string, middleName?: string, lastName: string, isMarried: boolean } = {
+    firstName: "John",
+    lastName: "Doe",
+    isMarried: false
+};
+
+// Middle name is optional, so it is not required when initializing the object.
+```
+
+In this example:
+- `middleName?` is an optional property. This means the `middleName` property may or may not be provided when creating the object.
+
+---
+
+#### **3. Literal Types**
+
+**Literal Types** allow you to define a specific, fixed value for a variable or property. This is more restrictive than using general types.
+
+###### **Example:**
+```typescript
+// Using Literal Types
+let firstName: "John" = "John";  // The value can only be "John"
+let isMarried: true = true;      // The value must be true
+```
+
+Here:
+- `firstName` is a **literal type** with the specific value `"John"`, so `firstName` can only hold this exact value.
+- `isMarried` is a **literal type** that only accepts the value `true`.
+
+###### **Literal Types in Objects:**
+```typescript
+// Using Literal Types within Objects
+let person: { firstName: "John", lastName: string, isMarried: boolean } = {
+    firstName: "John", // Only "John" is allowed for firstName
+    lastName: "Doe",
+    isMarried: false
+};
+```
+In this case:
+- `firstName` is restricted to the literal value `"John"`.
+
+---
+
+#### **4. Readonly Types**
+
+**Readonly Types** are used to make an object property immutable (i.e., it cannot be modified after it’s initialized). You can apply the `readonly` modifier to individual properties or to the entire object type.
+
+###### **Example (Readonly Property):**
+```typescript
+// Using the readonly modifier on a property
+let person: { readonly firstName: string, lastName: string } = {
+    firstName: "John",
+    lastName: "Doe"
+};
+
+// Trying to modify the readonly property will result in an error:
+person.firstName = "Jane"; // Error: Cannot assign to 'firstName' because it is a read-only property.
+```
+In this example:
+- `firstName` is marked as `readonly`, meaning it can’t be reassigned after the object is created.
+
+###### **Example (Readonly Object):**
+You can also make the entire object type readonly, which prevents any properties from being modified.
+
+```typescript
+// Using the readonly modifier on the whole object
+let person: Readonly<{ firstName: string, lastName: string }> = {
+    firstName: "John",
+    lastName: "Doe"
+};
+
+// Trying to modify any property will result in an error:
+person.firstName = "Jane";  // Error: Cannot assign to 'firstName' because it is a read-only property.
+```
+Here:
+- `Readonly<{ firstName: string, lastName: string }>` ensures that all properties in the `person` object are immutable.
+
+---
+
+### **Combining Object, Optional, Literal, and Readonly Types**
+
+You can combine **Object Types**, **Optional Types**, **Literal Types**, and **Readonly Types** to create more flexible, type-safe structures.
+
+#### **Example:**
+```typescript
+// Combining Object, Optional, Literal, and Readonly Types
+let person: {
+    readonly firstName: "John",   // Literal and Readonly
+    middleName?: string,          // Optional
+    lastName: string,             // Regular string
+    isMarried: boolean            // Boolean type
+} = {
+    firstName: "John",            // Literal type, must be "John"
+    lastName: "Doe",
+    isMarried: false
+};
+
+// The firstName cannot be changed because it's readonly
+person.firstName = "Jane"; // Error: Cannot assign to 'firstName' because it is a read-only property.
+
+person.middleName = "Paul";  // middleName is optional, so it can be assigned later.
+```
+
+In this example:
+- `firstName` is a **literal type** with the value `"John"` and is **readonly**, so it cannot be changed.
+- `middleName?` is an **optional** property, so it may or may not be included in the object.
+- `lastName` and `isMarried` are regular properties with their respective types.
 
 ---
