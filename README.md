@@ -13,7 +13,7 @@
       - [TypeScript-Specific Types](#typescript-specific-types)
    - [Drawbacks of Using TypeScript](#drawbacks-of-using-typescript)
   - [Installation](#1-2-installation)
-  - [Write your first typecript program](#1-3-write-your-first-typescript-program)
+  - [Write your first typescript program](#1-3-write-your-first-typescript-program)
   - [Understanding Data Types and Runtime Behavior](#1-4-understanding-data-types-and-runtime-behavior)
 
 
