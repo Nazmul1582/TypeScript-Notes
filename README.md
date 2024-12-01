@@ -17,6 +17,7 @@
   - [1-3 Write your first typescript program](#1-3-write-your-first-typescript-program)
   - [1-4 Understanding Data Types and Runtime Behavior](#1-4-understanding-data-types-and-runtime-behavior)
   - [1-5 Object , Optional and Literal Types](#1-5-object-optional-literal-and-readonly-types-in-typescript)
+  - [1-6 Functions in TypeScript](#1-6-functions-in-typescript)
 
 
 # 1 Explore Basic Type in TypeScript
@@ -564,5 +565,83 @@ In this example:
 - `firstName` is a **literal type** with the value `"John"` and is **readonly**, so it cannot be changed.
 - `middleName?` is an **optional** property, so it may or may not be included in the object.
 - `lastName` and `isMarried` are regular properties with their respective types.
+
+---
+
+## **1-6 Functions in TypeScript**
+
+In TypeScript, we can declare functions with specified argument types and return types. Here’s an example of a basic function that adds two numbers:
+
+```typescript
+function add(a: number, b: number): number {
+    return a + b;
+}
+```
+
+- The function `add` takes two parameters, `a` and `b`, both of type `number`.
+- It returns a value of type `number` (the sum of `a` and `b`).
+
+**Type Checking Example:**
+```typescript
+// add(4, '3') // Error: Argument of type 'string' is not assignable to parameter of type 'number'
+// add(5, 3)    // Valid: This works because both arguments are numbers
+```
+- TypeScript will give an error if the argument types don't match the expected types. In this case, passing a `string` instead of a `number` will cause a compile-time error.
+
+---
+
+### **2. Arrow Functions**
+
+Arrow functions in TypeScript are a more concise way to write functions. We can define the function’s parameter types and return type just like with a regular function.
+
+```typescript
+const addArrow = (a: number, b: number): number => {
+    return a + b;
+}
+```
+
+- `addArrow` is an arrow function that takes two parameters, `a` and `b`, both of type `number`.
+- It returns a `number`, which is the sum of `a` and `b`.
+
+**Type Checking Example:**
+```typescript
+// addArrow("3", 5) // Error: Argument of type 'string' is not assignable to parameter of type 'number'
+// addArrow(3, 5)    // Valid: This works because both arguments are numbers
+```
+- Again, TypeScript ensures type safety and gives an error if you pass a `string` instead of a `number`.
+
+---
+
+### **3. Methods in Objects**
+
+In TypeScript, you can define methods inside objects. The type of each method can be inferred from the function signature, but you can also explicitly define types for method arguments and return values.
+
+```typescript
+const poorUser = {
+    name: "Namzul",
+    balance: 0,
+    addBalance(newBalance: number): string {
+        return `My new balance is ${this.balance + newBalance}`;
+    }
+};
+```
+
+- The method `addBalance` takes a `newBalance` of type `number` and returns a `string` that includes the new balance value.
+- Inside the method, `this.balance` refers to the `balance` property of the `poorUser` object.
+
+---
+
+### **4. Array Methods with Type Annotations**
+
+You can use array methods like `map`, `filter`, etc., and specify the types for the elements of the array and the resulting array.
+
+```typescript
+const arr: number[] = [2, 5, 7, 33];
+const newArray: number[] = arr.map((ele: number): number => ele * ele);
+```
+
+- `arr` is an array of `number` types.
+- The `map` method is used to iterate over each element of the array and square each element.
+- The result of `map` is a new array `newArray` of `number[]` type, as each element is squared, ensuring the result is still a `number`.
 
 ---
